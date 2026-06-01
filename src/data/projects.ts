@@ -15,17 +15,17 @@ export interface ProjectStructure {
 
 export const projectsList: ProjectStructure[] = [
     {
-        id: "aegis",
-        title: "Project Aegis",
-        architectureTag: "LLMOps / Observability",
-        tagline: "Enterprise observability platform providing real-time evaluation, tracing, and tracing for large language model pipelines.",
-        techStack: ["Next.js", "Python", "FAISS", "Arize Phoenix"],
+        id: "flowforge",
+        title: "FlowForge",
+        architectureTag: "Visual Canvas Rigs",
+        tagline: "Interactive visual canvas mapping reactive workflow visualizers to an optimized, deterministic UI graph state coordinator.",
+        techStack: ["React Flow", "Tailwind CSS", "State Management"],
         telemetry: [
-            { label: "Vector Retrieval", value: "< 45ms" },
-            { label: "Trace Context Spans", value: "100% Verified" },
-            { label: "Pipeline Status", value: "Optimal" }
+            { label: "Canvas Engine FPS", value: "60 FPS Fixed" },
+            { label: "Node State Resolution", value: "Instant" },
+            { label: "Graph Engine", value: "Optimized" }
         ],
-        deploymentUrl: "https://aegis-platform.example.com" // Swap with your actual deployment link if live
+        deploymentUrl: "https://flowforge-ai-drab.vercel.app/"
     },
     {
         id: "panopticon",
@@ -38,7 +38,7 @@ export const projectsList: ProjectStructure[] = [
             { label: "Async Task Throughput", value: "Highly Concurrent" },
             { label: "Agent Status", value: "Active" }
         ],
-        deploymentUrl: "https://panopticon.example.com"
+        deploymentUrl: "https://project-panopticon-ui-rouge.vercel.app/"
     },
     {
         id: "analyzer",
@@ -51,19 +51,19 @@ export const projectsList: ProjectStructure[] = [
             { label: "Stream Processing", value: "Real-Time" },
             { label: "Pipeline Integrity", value: "Stable" }
         ],
-        deploymentUrl: "https://analyzer.example.com"
+        deploymentUrl: "https://nestjs-telemetry-analyzer.vercel.app/"
     },
     {
-        id: "flowforge",
-        title: "FlowForge",
-        architectureTag: "Visual Canvas Rigs",
-        tagline: "Interactive visual canvas mapping reactive workflow visualizers to an optimized, deterministic UI graph state coordinator.",
-        techStack: ["React Flow", "Tailwind CSS", "State Management"],
+        id: "aegis",
+        title: "Project Aegis",
+        architectureTag: "LLMOps / Observability",
+        tagline: "Enterprise observability platform providing real-time evaluation, tracing, and tracing for large language model pipelines.",
+        techStack: ["Next.js", "Python", "FAISS", "Arize Phoenix"],
         telemetry: [
-            { label: "Canvas Engine FPS", value: "60 FPS Fixed" },
-            { label: "Node State Resolution", value: "Instant" },
-            { label: "Graph Engine", value: "Optimized" }
+            { label: "Vector Retrieval", value: "< 45ms" },
+            { label: "Trace Context Spans", value: "100% Verified" },
+            { label: "Pipeline Status", value: "Optimal" }
         ],
-        deploymentUrl: "https://flowforge.example.com"
+        deploymentUrl: "https://project-aegis-tau.vercel.app/"
     }
 ];
