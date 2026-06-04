@@ -1,10 +1,42 @@
-'use html';
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { skillsData } from '@/data/skills';
 import { projectsList } from '@/data/projects';
-import { Terminal as TerminalIcon, Layers, ExternalLink, ShieldAlert } from 'lucide-react';
+import { Terminal as TerminalIcon, Layers, ExternalLink, ShieldAlert, Mail } from 'lucide-react';
+
+const GithubIcon = ({ className }: { className?: string }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+    >
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+        <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+    >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+    </svg>
+);
 
 interface OverlayUIProps {
     currentStage: number;
@@ -37,19 +69,72 @@ export default function OverlayUI({ currentStage, activeProject, setActiveProjec
             <div className="absolute inset-0 w-full h-[300vh] opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px] mix-blend-screen" />
 
             {/* ========================================================================= */}
+            {/* FLOATING SOCIAL & CONTACT UTILITY NAVIGATION HUB                         */}
+            {/* ========================================================================= */}
+            <div className="fixed top-1/2 right-6 -translate-y-1/2 flex flex-col gap-4 z-40 pointer-events-auto">
+                <motion.a
+                    whileHover={{ scale: 1.05, x: -3, borderColor: 'rgba(245, 158, 11, 0.6)' }}
+                    whileTap={{ scale: 0.95 }}
+                    href="/documents/Naveed_Resume.pdf" // Make sure your PDF is located exactly here in your public folder!
+                    download="Naveed_Software_Systems_Engineer_Resume.pdf"
+                    aria-label="Download PDF Resume"
+                    className="flex items-center gap-2 px-3 py-2 bg-stone-950/80 border border-amber-500/30 rounded-xl backdrop-blur-md text-amber-400 text-[10px] font-bold tracking-wider shadow-2xl transition-all"
+                >
+                    <span>CV</span>
+                    <span className="text-stone-600">|</span>
+                    <span className="text-[8px] animate-pulse text-stone-400">DL_</span>
+                </motion.a>
+                <motion.a
+                    whileHover={{ scale: 1.1, x: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="mailto:naveedahmed151106@gmail.com"
+                    aria-label="Send Email Inquiry"
+                    className="p-3 bg-stone-950/70 border border-stone-800/80 rounded-xl backdrop-blur-md text-stone-400 hover:text-amber-400 hover:border-amber-500/40 transition-colors shadow-xl"
+                >
+                    <Mail className="w-4 h-4" />
+                </motion.a>
+                <motion.a
+                    whileHover={{ scale: 1.1, x: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://github.com/Ahmed-Nav"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open GitHub Developer Profile"
+                    className="p-3 bg-stone-950/70 border border-stone-800/80 rounded-xl backdrop-blur-md text-stone-400 hover:text-amber-400 hover:border-amber-500/40 transition-colors shadow-xl"
+                >
+                    <GithubIcon className="w-4 h-4" />
+                </motion.a>
+                <motion.a
+                    whileHover={{ scale: 1.1, x: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://www.linkedin.com/in/naveed-ahmeddev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open LinkedIn Professional Network Profile"
+                    className="p-3 bg-stone-950/70 border border-stone-800/80 rounded-xl backdrop-blur-md text-stone-400 hover:text-amber-400 hover:border-amber-500/40 transition-colors shadow-xl"
+                >
+                    <LinkedinIcon className="w-4 h-4" />
+                </motion.a>
+            </div>
+
+            {/* ========================================================================= */}
             {/* ACT I: PROFESSIONAL HERO DECK (AI & SOFTWARE SYSTEMS)                      */}
             {/* ========================================================================= */}
             <section className="h-screen w-full flex flex-col justify-center items-start px-12 md:px-24 relative overflow-hidden">
 
-                {/* Tactical Professional Header Badge */}
-                <div className="absolute top-12 left-12 flex items-center gap-3 text-[10px] text-stone-500 tracking-widest bg-stone-900/30 border border-stone-800/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                {/* Tactical Professional Header Badge (Actionable Mailto Target Node Bridge) */}
+                <motion.a
+                    whileHover={{ scale: 1.02, borderColor: 'rgba(245, 158, 11, 0.4)' }}
+                    href="mailto:naveedahmed151106@gmail.com"
+                    className="absolute top-12 left-12 flex items-center gap-3 text-[10px] text-stone-500 tracking-widest bg-stone-900/40 border border-stone-800/60 px-3 py-1.5 rounded-lg backdrop-blur-sm pointer-events-auto transition-colors group cursor-pointer"
+                >
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
                     <span>PORTFOLIO_NODE // CHN_IN</span>
                     <span className="text-stone-700">|</span>
-                    <span className="text-stone-400">AVAILABLE FOR ROLES</span>
-                </div>
+                    <span className="text-stone-400 group-hover:text-amber-400 transition-colors">AVAILABLE FOR ROLES ❯</span>
+                </motion.a>
 
-                <div className="max-w-xl pointer-events-auto space-y-6 relative z-10">
+                <div className="max-w-xl pointer-events-auto space-y-5 relative z-10">
                     <AnimatePresence>
                         {currentStage === 0 && (
                             <motion.div
@@ -58,14 +143,25 @@ export default function OverlayUI({ currentStage, activeProject, setActiveProjec
                                 exit={{ opacity: 0 }}
                                 className="space-y-4"
                             >
-                                {/* Clear, High-Impact Professional Heading Stack */}
-                                <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-left leading-[0.85] font-sans">
-                                    <CyberHeader text="SOFTWARE" delay={0.05} />
-                                    <CyberHeader text="ENGINEER" delay={0.1} />
-                                    <span className="block text-xl md:text-2xl font-mono font-light tracking-tight mt-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
-                                        &nbsp;// Specializing in AI & 3D Graphics
-                                    </span>
-                                </h1>
+                                {/* PROMINENT IDENTITY HEADER WRAPPER */}
+                                <div className="space-y-1">
+                                    <motion.span
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        className="text-xs font-bold text-amber-500 tracking-[0.35em] uppercase block"
+                                    >
+                                        NAVEED AHMED M // SYSTEMS_ARCHITECT
+                                    </motion.span>
+
+                                    {/* Clear, High-Impact Professional Heading Stack */}
+                                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-left leading-[0.85] font-sans">
+                                        <CyberHeader text="SOFTWARE" delay={0.05} />
+                                        <CyberHeader text="ENGINEER" delay={0.1} />
+                                        <span className="block text-xl md:text-2xl font-mono font-light tracking-tight mt-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
+                                            &nbsp;// Specializing in AI & 3D Graphics
+                                        </span>
+                                    </h1>
+                                </div>
 
                                 {/* Matrix Divider Line */}
                                 <div className="flex items-center gap-2 w-full max-w-xs">
@@ -74,10 +170,16 @@ export default function OverlayUI({ currentStage, activeProject, setActiveProjec
                                     <div className="h-[1px] bg-stone-800 w-12" />
                                 </div>
 
-                                {/* Refined Bio emphasizing your transition and high-tier engineering focus */}
-                                <p className="text-stone-400 font-sans text-xs md:text-sm leading-relaxed max-w-md border-l-2 border-amber-500/30 pl-4">
-                                    Engineering robust full-stack software architectures with a specialized transition into intelligent systems—building asynchronous multi-agent networks, LLMOps observability pipelines, vector retrieval indices, and interactive WebGL environments.
-                                </p>
+                                <div className="space-y-3">
+                                    <div className="text-[10px] text-stone-500 tracking-wider flex items-center gap-2">
+                                        <span className="text-amber-500 font-bold">❯ TRAJECTORY:</span>
+                                        <span>FINAL-YEAR SYSTEMS DEVELOPER // CHENNAI</span>
+                                    </div>
+
+                                    <p className="text-stone-400 font-sans text-xs md:text-sm leading-relaxed max-w-md border-l-2 border-amber-500/30 pl-4">
+                                        Full-Stack Systems Engineer specializing in robust web architectures and intelligent autonomous infrastructure. Proven track record of delivering production-grade dashboards, web telemetry suites, and optimized asynchronous workflows for real-world professional clients.
+                                    </p>
+                                </div>
 
                                 {/* Interactive Scroll Guide */}
                                 <motion.div

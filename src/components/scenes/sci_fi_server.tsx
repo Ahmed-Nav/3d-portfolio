@@ -86,4 +86,4 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/models/sci-fi_based_server_racks.glb')
+useGLTF.preload('/models/sci-fi_server_racks_opt.glb')

@@ -48,4 +48,4 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/models/hologram_projector_with_hologram.glb')
+useGLTF.preload('/models/hologram_projector_with_hologram_opt.glb')

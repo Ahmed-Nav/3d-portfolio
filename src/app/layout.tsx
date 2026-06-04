@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Systems & Graphics Engineer | Portfolio",
-  description: "Production software architecture, intelligent multi-agent networks, and real-time interactive 3D graphics.",
+  title: "Naveed Ahmed M | AI & Software Systems Architect",
+  description: "Engineering robust full-stack software architectures, asynchronous multi-agent networks, and real-time interactive 3D WebGL environments.",
 };
 
 export default function RootLayout({

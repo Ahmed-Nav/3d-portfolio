@@ -1,4 +1,3 @@
-'use html';
 'use client';
 
 import { useRef, useEffect } from 'react';

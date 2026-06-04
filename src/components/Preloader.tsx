@@ -1,4 +1,3 @@
-'use html';
 'use client';
 
 import { useProgress } from '@react-three/drei';

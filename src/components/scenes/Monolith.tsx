@@ -43,4 +43,4 @@ export function Model(props: React.JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/models/monolith.glb')
+useGLTF.preload('/models/monolith_opt.glb')
