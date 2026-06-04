@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, FileText, Sparkles, Flame, Terminal, Cpu, BrainCircuit, Anchor, Coins, Compass } from 'lucide-react';
 import { skillsData } from '@/data/skills';
@@ -72,10 +72,10 @@ const customStyles = `
   }
 /* 🫧 SABAODY OCEAN BUBBLES FLOATING DRIFT ENGINE */
   @keyframes sabaodyBubbleDrift {
-    0% { transform: translateY(105vh) scale(0.8); opacity: 0; }
-    10% { opacity: 0.25; }
-    90% { opacity: 0.15; }
-    100% { transform: translateY(-10vh) scale(1.2) translateX(30px); opacity: 0; }
+    0% { transform: translateY(0) scale(0.6); opacity: 0; }
+    10% { opacity: 0.45; }
+    90% { opacity: 0.35; }
+    100% { transform: translateY(-115vh) scale(1.3) translateX(45px); opacity: 0; }
   }
 
   /* 🏴‍☠️ SEA LEGEND FLOATING POSTER CALIBRATION */
@@ -94,12 +94,125 @@ const customStyles = `
   }
 `;
 
+const AmbientParticles = memo(({ activeTab }: { activeTab: 'home' | 'skills' | 'projects' }) => {
+    // Stable particle metrics to prevent layout shifts and jiggling during tab switches or scroll events
+    const homeEmbers = useMemo(() => {
+        return [...Array(20)].map((_, i) => ({
+            width: i % 3 === 0 ? '5px' : i % 3 === 1 ? '3px' : '2px',
+            height: i % 3 === 0 ? '5px' : i % 3 === 1 ? '7px' : '4px',
+            left: 5 + Math.random() * 90,
+            duration: 3 + Math.random() * 4,
+            delay: i * 0.2,
+            driftX: (i % 2 === 0 ? 45 : -45) * Math.random(),
+            rotateEnd: 360 + Math.random() * 360
+        }));
+    }, []);
+
+    const skillsSteam = useMemo(() => {
+        return [...Array(20)].map((_, i) => ({
+            width: i % 2 === 0 ? '4px' : '2px',
+            height: i % 2 === 0 ? '4px' : '8px',
+            left: 5 + Math.random() * 95,
+            duration: 2.5 + Math.random() * 3,
+            delay: i * 0.15,
+            driftX: (i % 2 === 0 ? 30 : -30) * Math.random()
+        }));
+    }, []);
+
+    const projectBubbles = useMemo(() => {
+        return [...Array(15)].map((_, i) => ({
+            width: 14 + Math.random() * 24,
+            height: 14 + Math.random() * 24,
+            left: 4 + Math.random() * 92,
+            duration: 4.5 + Math.random() * 3.5,
+            delay: i * 0.4
+        }));
+    }, []);
+
+    const getEmberColor = (index: number) => {
+        const colors = ['#ff4500', '#ffaa00', '#ff003c', '#2c2523'];
+        return colors[index % colors.length];
+    };
+
+    const getTitanParticleColor = (index: number) => {
+        const colors = ['#00ff66', '#059669', '#34d399', '#a7f3d0'];
+        return colors[index % colors.length];
+    };
+
+    return (
+        <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
+            {activeTab === 'home' && homeEmbers.map((ember, i) => (
+                <motion.div
+                    key={`home-ember-${i}`}
+                    className="absolute"
+                    style={{
+                        width: ember.width,
+                        height: ember.height,
+                        backgroundColor: getEmberColor(i),
+                        left: `${ember.left}%`,
+                        bottom: `-20px`,
+                        transform: 'rotate(45deg)',
+                    }}
+                    animate={{
+                        y: ['0vh', '-110vh'],
+                        x: ['0px', `${ember.driftX}px`],
+                        rotate: [45, ember.rotateEnd],
+                        opacity: [0, 0.9, 0.5, 0]
+                    }}
+                    transition={{ duration: ember.duration, repeat: Infinity, delay: ember.delay, ease: "easeOut" }}
+                />
+            ))}
+
+            {activeTab === 'skills' && skillsSteam.map((steam, i) => (
+                <motion.div
+                    key={`titan-steam-${i}`}
+                    className="absolute"
+                    style={{
+                        width: steam.width,
+                        height: steam.height,
+                        backgroundColor: getTitanParticleColor(i),
+                        left: `${steam.left}%`,
+                        bottom: `-20px`,
+                    }}
+                    animate={{
+                        y: ['0vh', '-110vh'],
+                        x: ['0px', `${steam.driftX}px`],
+                        opacity: [0, 0.7, 0.3, 0],
+                        filter: ['blur(0px)', 'blur(2px)']
+                    }}
+                    transition={{ duration: steam.duration, repeat: Infinity, delay: steam.delay, ease: "linear" }}
+                />
+            ))}
+
+            {activeTab === 'projects' && projectBubbles.map((bubble, i) => (
+                <div
+                    key={`sabaody-bubble-${i}`}
+                    className="absolute rounded-full pointer-events-none z-0"
+                    style={{
+                        width: `${bubble.width}px`,
+                        height: `${bubble.height}px`,
+                        left: `${bubble.left}%`,
+                        bottom: '-50px',
+                        border: '2.5px solid rgba(14, 165, 233, 0.75)',
+                        backgroundColor: 'rgba(186, 230, 253, 0.35)',
+                        boxShadow: 'inset 0 0 8px rgba(56, 189, 248, 0.6), 0 0 12px rgba(14, 165, 233, 0.3)',
+                        animation: `sabaodyBubbleDrift ${bubble.duration}s cubic-bezier(0.4, 0, 0.2, 1) ${bubble.delay}s infinite`
+                    }}
+                />
+            ))}
+        </div>
+    );
+});
+AmbientParticles.displayName = 'AmbientParticles';
+
 export default function MobileAnimePortfolio() {
     const [activeTab, setActiveTab] = useState<'home' | 'skills' | 'projects'>('home');
     const [selectedDivision, setSelectedDivision] = useState(0);
     const [triggerLightning, setTriggerLightning] = useState(false);
     const [triggerSlash, setTriggerSlash] = useState(false);
     const [scrollPercent, setScrollPercent] = useState(0);
+
+
 
     useEffect(() => {
         const calculateScrollRoute = () => {
@@ -128,15 +241,7 @@ export default function MobileAnimePortfolio() {
         setTimeout(() => setTriggerSlash(false), 650);
     };
 
-    const getEmberColor = (index: number) => {
-        const colors = ['#ff4500', '#ffaa00', '#ff003c', '#2c2523'];
-        return colors[index % colors.length];
-    };
 
-    const getTitanParticleColor = (index: number) => {
-        const colors = ['#00ff66', '#059669', '#34d399', '#a7f3d0'];
-        return colors[index % colors.length];
-    };
 
     const categoryIcons = [Terminal, Cpu, BrainCircuit];
 
@@ -161,50 +266,7 @@ export default function MobileAnimePortfolio() {
             />
 
             {/* AMBIENT PARTICLE LAYER */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-                {activeTab === 'home' && [...Array(20)].map((_, i) => (
-                    <motion.div
-                        key={`home-ember-${i}`}
-                        className="absolute"
-                        style={{
-                            width: i % 3 === 0 ? '5px' : i % 3 === 1 ? '3px' : '2px',
-                            height: i % 3 === 0 ? '5px' : i % 3 === 1 ? '7px' : '4px',
-                            backgroundColor: getEmberColor(i),
-                            left: `${5 + Math.random() * 90}%`,
-                            bottom: `-20px`,
-                            transform: 'rotate(45deg)',
-                        }}
-                        animate={{
-                            y: ['0vh', '-110vh'],
-                            x: ['0px', `${(i % 2 === 0 ? 45 : -45) * Math.random()}px`],
-                            rotate: [45, 360 + Math.random() * 360],
-                            opacity: [0, 0.9, 0.5, 0]
-                        }}
-                        transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: i * 0.2, ease: "easeOut" }}
-                    />
-                ))}
-
-                {activeTab === 'skills' && [...Array(20)].map((_, i) => (
-                    <motion.div
-                        key={`titan-steam-${i}`}
-                        className="absolute"
-                        style={{
-                            width: i % 2 === 0 ? '4px' : '2px',
-                            height: i % 2 === 0 ? '4px' : '8px',
-                            backgroundColor: getTitanParticleColor(i),
-                            left: `${5 + Math.random() * 95}%`,
-                            bottom: `-20px`,
-                        }}
-                        animate={{
-                            y: ['0vh', '-110vh'],
-                            x: ['0px', `${(i % 2 === 0 ? 30 : -30) * Math.random()}px`],
-                            opacity: [0, 0.7, 0.3, 0],
-                            filter: ['blur(0px)', 'blur(2px)']
-                        }}
-                        transition={{ duration: 2.5 + Math.random() * 3, repeat: Infinity, delay: i * 0.15, ease: "linear" }}
-                    />
-                ))}
-            </div>
+            <AmbientParticles activeTab={activeTab} />
 
             {/* THE TITAN LIGHTNING TRANSFORMATION OVERLAY FRAME */}
             {triggerLightning && (
@@ -516,12 +578,15 @@ export default function MobileAnimePortfolio() {
                                     />
 
                                     {/* WANTED POSTERS CORE PANEL */}
-                                    <motion.div
+                                    <motion.a
+                                        href={project.deploymentUrl || "#"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         initial={{ opacity: 0, y: -150, rotate: index % 2 === 0 ? 3 : -3 }}
                                         animate={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? 1 : -1 }}
                                         transition={{ ...pirateSlamSpring, delay: index * 0.12 }}
                                         whileTap={{ scale: 0.98, rotate: 0 }}
-                                        className="bg-[#f0e4cf] border-4 border-stone-900 p-5 shadow-[5px_5px_0px_#1c1917] relative z-10 cursor-pointer select-none rounded-none"
+                                        className="bg-[#f0e4cf] border-4 border-stone-900 p-5 shadow-[5px_5px_0px_#1c1917] relative z-10 cursor-pointer select-none rounded-none block"
                                         style={{
                                             clipPath: 'polygon(0% 0%, 97% 0.5%, 100% 3%, 99.5% 48%, 100% 55%, 99% 96%, 96% 100%, 52% 99.5%, 45% 100%, 4% 99%, 0% 95%, 0.5% 42%, 0% 25%)'
                                         }}
@@ -563,7 +628,7 @@ export default function MobileAnimePortfolio() {
                                                 </span>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </motion.a>
                                 </div>
                             ))}
                         </div>
