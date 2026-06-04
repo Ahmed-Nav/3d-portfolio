@@ -11,21 +11,21 @@ const shonenSpring = {
     mass: 0.3,
     stiffness: 550,
     damping: 12
-};
+} as const;
 
 const titanLockSpring = {
     type: "spring",
     mass: 0.6,
     stiffness: 400,
     damping: 16
-};
+} as const;
 
 const pirateSlamSpring = {
     type: "spring",
     mass: 0.8,
     stiffness: 280,
     damping: 14
-};
+} as const;
 
 const customStyles = `
   @keyframes mangaFlameTop {
