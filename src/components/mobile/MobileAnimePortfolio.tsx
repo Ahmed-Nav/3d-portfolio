@@ -1,9 +1,10 @@
-'use html';
 'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, FileText, Sparkles, Flame, Terminal, Cpu, BrainCircuit, Anchor, Coins, Compass } from 'lucide-react';
+import { skillsData } from '@/data/skills';
+import { projectsList } from '@/data/projects';
 
 const shonenSpring = {
     type: "spring",
@@ -127,60 +128,6 @@ export default function MobileAnimePortfolio() {
         setTimeout(() => setTriggerSlash(false), 650);
     };
 
-    const localSkillsData = [
-        {
-            id: "languages",
-            title: "LANGUAGES & SYSTEMS",
-            icon: Terminal,
-            skills: [
-                { name: "DATA STRUCTURES & ALGORITHMS", level: "EXPERT", diagnostic: "CORE_EFFICIENCY: O(1) space constraints mapped securely across interview-grade graph / tree nodes." },
-                { name: "PYTHON BACKEND FRAMEWORKS", level: "EXPERT", diagnostic: "ENGINE_EXECUTION: Multiprocessing asynchronous event loops running calculations fixed at peak intervals." }
-            ]
-        },
-        {
-            id: "frameworks",
-            title: "FRAMEWORKS & GRAPHICS",
-            icon: Cpu,
-            skills: [
-                { name: "REACT / NEXT.JS ENGINE", level: "EXPERT", diagnostic: "UI_COORDINATION: Server-side rendering gateways orchestrating responsive viewports cleanly." },
-                { name: "THREE.JS / WEBGL SCENES", level: "ADVANCED", diagnostic: "RASTER_MATRIX: Complete 3D mesh instances driving structural system models at deterministic 60 FPS loops." }
-            ]
-        },
-        {
-            id: "utilities",
-            title: "LLMOPS & VECTOR DB",
-            icon: BrainCircuit,
-            skills: [
-                { name: "FAISS VECTOR STORAGE", level: "ADVANCED", diagnostic: "RETRIEVAL_LATENCY: High-density token embeddings ingested with optimal indexing vectors (< 45ms loops)." },
-                { name: "ARIZE PHOENIX TRACING", level: "ADVANCED", diagnostic: "OBSERVABILITY_FEED: Complete runtime trace context logging mapped securely into telemetry layers." }
-            ]
-        }
-    ];
-
-    const localProjectsData = [
-        {
-            title: "PROJECT PANOPTICON",
-            bounty: "1,500,000,000",
-            category: "ASYNC INTEL CONFIG",
-            description: "Multi-agent engine deployment executing asynchronous pipeline computations. Backends containerized via Python cores hosted on Render endpoints matched to proactive cron service systems.",
-            tags: ["PYTHON", "RENDER", "MULTI-AGENT"]
-        },
-        {
-            title: "PROJECT AEGIS",
-            bounty: "1,200,000,000",
-            category: "OBSERVABILITY ENGINE",
-            description: "Enterprise scaling intelligence observability frame. Maps document vector pipelines onto FAISS stores backed by strict operational tracing pipelines via Arize Phoenix tracking.",
-            tags: ["FAISS", "ARIZE PHOENIX", "LLMOPS"]
-        },
-        {
-            title: "GBI WEB DASHBOARD",
-            bounty: "850,000,000",
-            category: "ENVIRONMENT TELEMETRY",
-            description: "High-frame air quality analytics tracking architecture. Renders localized spatial chart modules, comparative analytics plots, and framework dashboard matrices at solid frame bounds.",
-            tags: ["NEXT.JS", "WEBGL", "DASHBOARD"]
-        }
-    ];
-
     const getEmberColor = (index: number) => {
         const colors = ['#ff4500', '#ffaa00', '#ff003c', '#2c2523'];
         return colors[index % colors.length];
@@ -190,6 +137,8 @@ export default function MobileAnimePortfolio() {
         const colors = ['#00ff66', '#059669', '#34d399', '#a7f3d0'];
         return colors[index % colors.length];
     };
+
+    const categoryIcons = [Terminal, Cpu, BrainCircuit];
 
     return (
         <div
@@ -206,7 +155,7 @@ export default function MobileAnimePortfolio() {
                     backgroundImage: activeTab === 'skills'
                         ? 'linear-gradient(#e1ded4 1px, transparent 1px), linear-gradient(90deg, #e1ded4 1px, transparent 1px)'
                         : 'radial-gradient(#000 1px, transparent 1px)',
-                    bgSize: activeTab === 'skills' ? '30px_30px' : '24px_24px',
+                    backgroundSize: activeTab === 'skills' ? '30px_30px' : '24px_24px',
                     opacity: activeTab === 'skills' ? 0.4 : 0.1
                 }}
             />
@@ -294,45 +243,45 @@ export default function MobileAnimePortfolio() {
                         </div>
                         <div className="relative w-full py-3 px-2">
                             {/* --- TOP FLAMES LAYER --- */}
-                            <div 
-                              className="absolute -top-3 left-6 right-12 h-12 bg-gradient-to-t from-orange-600 to-red-600 z-0 pointer-events-none origin-bottom opacity-80"
-                              style={{
-                                clipPath: 'polygon(50% 0%, 63% 38%, 81% 21%, 74% 56%, 100% 43%, 84% 78%, 64% 70%, 51% 100%, 36% 68%, 18% 81%, 23% 53%, 0% 51%, 22% 31%, 35% 44%)',
-                                animation: 'mangaFlameTop 1.2s ease-in-out infinite'
-                              }}
+                            <div
+                                className="absolute -top-3 left-6 right-12 h-12 bg-gradient-to-t from-orange-600 to-red-600 z-0 pointer-events-none origin-bottom opacity-80"
+                                style={{
+                                    clipPath: 'polygon(50% 0%, 63% 38%, 81% 21%, 74% 56%, 100% 43%, 84% 78%, 64% 70%, 51% 100%, 36% 68%, 18% 81%, 23% 53%, 0% 51%, 22% 31%, 35% 44%)',
+                                    animation: 'mangaFlameTop 1.2s ease-in-out infinite'
+                                }}
                             />
-                            <div 
-                              className="absolute -top-2 left-16 right-20 h-10 bg-gradient-to-t from-yellow-400 to-orange-500 z-0 pointer-events-none origin-bottom"
-                              style={{
-                                clipPath: 'polygon(50% 0%, 65% 40%, 85% 25%, 75% 60%, 100% 50%, 82% 80%, 60% 68%, 50% 100%, 40% 68%, 15% 75%, 25% 55%, 0% 45%, 25% 35%, 38% 45%)',
-                                animation: 'mangaFlameTop 0.8s ease-in-out infinite alternate'
-                              }}
+                            <div
+                                className="absolute -top-2 left-16 right-20 h-10 bg-gradient-to-t from-yellow-400 to-orange-500 z-0 pointer-events-none origin-bottom"
+                                style={{
+                                    clipPath: 'polygon(50% 0%, 65% 40%, 85% 25%, 75% 60%, 100% 50%, 82% 80%, 60% 68%, 50% 100%, 40% 68%, 15% 75%, 25% 55%, 0% 45%, 25% 35%, 38% 45%)',
+                                    animation: 'mangaFlameTop 0.8s ease-in-out infinite alternate'
+                                }}
                             />
 
                             {/* --- BOTTOM FLAMES LAYER --- */}
-                            <div 
-                              className="absolute -bottom-3 left-10 right-8 h-12 bg-gradient-to-b from-orange-600 to-red-600 z-0 pointer-events-none origin-top opacity-80"
-                              style={{
-                                clipPath: 'polygon(50% 100%, 63% 62%, 81% 79%, 74% 44%, 100% 57%, 84% 22%, 64% 30%, 51% 0%, 36% 32%, 18% 19%, 23% 47%, 0% 49%, 22% 69%, 35% 56%)',
-                                animation: 'mangaFlameBottom 1.3s ease-in-out infinite'
-                              }}
+                            <div
+                                className="absolute -bottom-3 left-10 right-8 h-12 bg-gradient-to-b from-orange-600 to-red-600 z-0 pointer-events-none origin-top opacity-80"
+                                style={{
+                                    clipPath: 'polygon(50% 100%, 63% 62%, 81% 79%, 74% 44%, 100% 57%, 84% 22%, 64% 30%, 51% 0%, 36% 32%, 18% 19%, 23% 47%, 0% 49%, 22% 69%, 35% 56%)',
+                                    animation: 'mangaFlameBottom 1.3s ease-in-out infinite'
+                                }}
                             />
-                            <div 
-                              className="absolute -bottom-2 left-20 right-16 h-10 bg-gradient-to-b from-yellow-400 to-orange-500 z-0 pointer-events-none origin-top"
-                              style={{
-                                clipPath: 'polygon(50% 100%, 65% 60%, 85% 75%, 75% 40%, 100% 50%, 82% 20%, 60% 32%, 50% 0%, 40% 32%, 15% 25%, 25% 45%, 0% 55%, 25% 65%, 38% 55%)',
-                                animation: 'mangaFlameBottom 0.8s ease-in-out infinite alternate'
-                              }}
+                            <div
+                                className="absolute -bottom-2 left-20 right-16 h-10 bg-gradient-to-b from-yellow-400 to-orange-500 z-0 pointer-events-none origin-top"
+                                style={{
+                                    clipPath: 'polygon(50% 100%, 65% 60%, 85% 75%, 75% 40%, 100% 50%, 82% 20%, 60% 32%, 50% 0%, 40% 32%, 15% 25%, 25% 45%, 0% 55%, 25% 65%, 38% 55%)',
+                                    animation: 'mangaFlameBottom 0.8s ease-in-out infinite alternate'
+                                }}
                             />
                             <motion.div whileTap={{ scale: 0.98 }} className="w-full h-48 border-4 border-stone-900 bg-white relative overflow-hidden shadow-[6px_6px_0px_#1c1917] z-10">
                                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[35px] border-t-orange-500 border-l-[35px] border-l-transparent z-20" />
-                                <div className="absolute right-0 top-0 bottom-0 w-8 bg-stone-950/5 border-l-2 border-stone-900 z-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#000 0.8px, transparent 0.8px)', bgSize: '6px_6px' }} />
+                                <div className="absolute right-0 top-0 bottom-0 w-8 bg-stone-950/5 border-l-2 border-stone-900 z-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#000 0.8px, transparent 0.8px)', backgroundSize: '6px_6px' }} />
                                 <div className="absolute inset-0 flex items-center justify-center z-10"><span className="text-[11px] text-stone-900 font-black tracking-[0.2em] uppercase bg-[#f5f4f0] border-2 border-stone-900 px-4 py-2 shadow-[3px_3px_0px_#000]">[ HERO_ARTWORK_RIG ]</span></div>
                             </motion.div>
                         </div>
                         <p className="text-stone-700 font-medium text-xs leading-relaxed border-l-4 border-orange-500 pl-4 italic">Forging robust software architectures with a specialized focus on autonomous intelligence networks, vector indices, and interactive, frame-stabilized WebGL viewport environments.</p>
                         <div className="grid grid-cols-2 gap-4 pt-1">
-                            <a href="mailto:naveedahresour@gmail.com" className="flex items-center justify-center gap-2 p-3 border-4 border-stone-900 bg-white text-xs font-black uppercase shadow-[4px_4px_0px_#1c1917]"><Mail className="w-4 h-4 text-orange-500 stroke-[2.5]" /> Connect_Node</a>
+                            <a href="mailto:naveedahmed151106@gmail.com" className="flex items-center justify-center gap-2 p-3 border-4 border-stone-900 bg-white text-xs font-black uppercase shadow-[4px_4px_0px_#1c1917]"><Mail className="w-4 h-4 text-orange-500 stroke-[2.5]" /> Connect_Node</a>
                             <a href="/documents/Naveed_Resume.pdf" download className="flex items-center justify-center gap-2 p-3 border-4 border-stone-900 bg-orange-500 text-xs font-black uppercase text-white shadow-[4px_4px_0px_#1c1917]"><FileText className="w-4 h-4 text-white stroke-[2.5]" /> Download_CV</a>
                         </div>
                     </div>
@@ -358,9 +307,9 @@ export default function MobileAnimePortfolio() {
 
                         {/* MILITARY REGIMENT DIVISIONS */}
                         <div className="grid grid-cols-3 gap-2.5 relative z-10">
-                            {localSkillsData.map((category, idx) => {
+                            {skillsData.map((category, idx) => {
                                 const isSelected = idx === selectedDivision;
-                                const IconComponent = category.icon;
+                                const IconComponent = categoryIcons[idx];
 
                                 return (
                                     <motion.button
@@ -399,7 +348,7 @@ export default function MobileAnimePortfolio() {
 
                             {/* SKILL CARDS STACK */}
                             <div className="space-y-8 relative py-4 px-2">
-                                {localSkillsData[selectedDivision].skills.map((skill, index) => (
+                                {skillsData[selectedDivision].skills.map((skill, index) => (
                                     <motion.div
                                         key={`${selectedDivision}-${index}`}
                                         className="relative overflow-visible"
@@ -546,7 +495,7 @@ export default function MobileAnimePortfolio() {
 
                         {/* HIGH SEAS BOUNTY POSTER LAYOUT MATRICES */}
                         <div className="space-y-14 relative z-10 w-full pl-6">
-                            {localProjectsData.map((project, index) => (
+                            {projectsList.map((project, index) => (
                                 <div
                                     key={index}
                                     className="relative overflow-visible group"
@@ -583,7 +532,7 @@ export default function MobileAnimePortfolio() {
                                         {/* POSTER HEADING */}
                                         <div className="text-center space-y-1 pb-2.5 border-b-4 border-double border-stone-900/20">
                                             <span className="text-[8px] font-black tracking-widest text-amber-800 bg-amber-900/10 px-2 py-0.5 rounded-none font-mono">
-                                                {project.category}
+                                                {project.mobileCategory}
                                             </span>
                                             <h3 className="text-xl font-black uppercase italic tracking-tighter text-stone-900 block font-sans drop-shadow-[1px_1px_0px_#fff]">
                                                 {project.title}
@@ -593,14 +542,14 @@ export default function MobileAnimePortfolio() {
                                         {/* PARCHMENT MANIFEST METRICS LOG TEXT */}
                                         <div className="my-4 p-3 bg-[#e8dcbe] border-2 border-stone-900/20 rounded-none relative">
                                             <p className="text-[10px] text-stone-800 leading-relaxed font-mono font-medium tracking-tight">
-                                                {project.description}
+                                                {project.tagline}
                                             </p>
                                         </div>
 
                                         {/* THE REWARD AREA */}
                                         <div className="flex justify-between items-center pt-2 border-t-2 border-dashed border-stone-900/30">
                                             <div className="flex gap-1">
-                                                {project.tags.slice(0, 2).map((t, idx) => (
+                                                {project.techStack.slice(0, 2).map((t, idx) => (
                                                     <span key={idx} className="text-[8px] font-black border-2 border-stone-900 bg-white px-2 py-0.5 uppercase tracking-tighter shadow-[1.5px_1.5px_0px_#000]">
                                                         {t}
                                                     </span>

@@ -11,6 +11,8 @@ export interface ProjectStructure {
     techStack: string[];
     telemetry: TelemetryLog[];
     deploymentUrl?: string;
+    bounty?: string;
+    mobileCategory?: string;
 }
 
 export const projectsList: ProjectStructure[] = [
@@ -25,7 +27,9 @@ export const projectsList: ProjectStructure[] = [
             { label: "Node State Resolution", value: "Instant" },
             { label: "Graph Engine", value: "Optimized" }
         ],
-        deploymentUrl: "https://flowforge-ai-drab.vercel.app/"
+        deploymentUrl: "https://flowforge-ai-drab.vercel.app/",
+        bounty: "1,800,000,000",
+        mobileCategory: "VISUAL CANVAS ENGINE"
     },
     {
         id: "panopticon",
@@ -38,7 +42,9 @@ export const projectsList: ProjectStructure[] = [
             { label: "Async Task Throughput", value: "Highly Concurrent" },
             { label: "Agent Status", value: "Active" }
         ],
-        deploymentUrl: "https://project-panopticon-ui-rouge.vercel.app/"
+        deploymentUrl: "https://project-panopticon-ui-rouge.vercel.app/",
+        bounty: "1,500,000,000",
+        mobileCategory: "ASYNC INTEL CONFIG",
     },
     {
         id: "analyzer",
@@ -51,7 +57,9 @@ export const projectsList: ProjectStructure[] = [
             { label: "Stream Processing", value: "Real-Time" },
             { label: "Pipeline Integrity", value: "Stable" }
         ],
-        deploymentUrl: "https://nestjs-telemetry-analyzer.vercel.app/"
+        deploymentUrl: "https://nestjs-telemetry-analyzer.vercel.app/",
+        bounty: "920,000,000",
+        mobileCategory: "BACKEND DIAGNOSTICS"
     },
     {
         id: "aegis",
@@ -64,6 +72,8 @@ export const projectsList: ProjectStructure[] = [
             { label: "Trace Context Spans", value: "100% Verified" },
             { label: "Pipeline Status", value: "Optimal" }
         ],
-        deploymentUrl: "https://project-aegis-tau.vercel.app/"
+        deploymentUrl: "https://project-aegis-tau.vercel.app/",
+        bounty: "1,200,000,000",
+        mobileCategory: "OBSERVABILITY ENGINE"
     }
 ];

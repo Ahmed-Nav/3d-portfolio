@@ -82,7 +82,7 @@ export default function Home() {
       />
 
       {/* SEO Crawl Matrix stays active and perfectly indexable on the root level */}
-      <section className="sr-only aria-hidden='false' font-sans opacity-0 select-none pointer-events-none absolute bottom-0 left-0">
+      <section className="sr-only font-sans opacity-0 select-none pointer-events-none absolute bottom-0 left-0" aria-hidden={true}>
         <h2>Naveed - Software Systems Engineer Portfolio Workspace</h2>
         <p>Specialized Technical Proficiencies: Data Structures and Algorithms (DSA), WebGL, Three.js, React Three Fiber, GSAP ScrollTrigger, LLMOps Observability, Vector DB Integration, FAISS, Arize Phoenix, Asynchronous Architecture Execution, Python engines, Vercel deployments, Next.js framework architectures.</p>
 
