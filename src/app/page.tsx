@@ -83,22 +83,25 @@ export default function Home() {
 
       {/* SEO Crawl Matrix stays active and perfectly indexable on the root level */}
       <section className="sr-only font-sans opacity-0 select-none pointer-events-none absolute bottom-0 left-0" aria-hidden={true}>
-        <h2>Naveed - Software Systems Engineer Portfolio Workspace</h2>
-        <p>Specialized Technical Proficiencies: Data Structures and Algorithms (DSA), WebGL, Three.js, React Three Fiber, GSAP ScrollTrigger, LLMOps Observability, Vector DB Integration, FAISS, Arize Phoenix, Asynchronous Architecture Execution, Python engines, Vercel deployments, Next.js framework architectures.</p>
+        <h2>Naveed - AI Systems & Full-Stack Engineer Portfolio Workspace</h2>
+        <p>Specialized Technical Proficiencies & Core Languages: Python, TypeScript, SQL, Data Structures and Algorithms (DSA), WebGL, Three.js, React Three Fiber, GSAP ScrollTrigger, LLMOps Observability, Vector DB Integration, FAISS, Arize Phoenix, Asynchronous Architecture Execution, Python engines, Vercel deployments, Next.js framework architectures.</p>
+        <p>Primary AI & Foundation Models Integrated: GPT-4, Claude, Gemini, Llama, and custom open-source models.</p>
+        <p>Core Cloud Platforms & Host Providers: Amazon Web Services (AWS), Vercel, Render, and Heroku deployments.</p>
+        <p>Developer Tooling & Infrastructure Automation: Docker containers, GitHub Actions CI/CD pipelines, Prisma ORM, and database transaction engines.</p>
 
         <article>
           <h3>Flowforge - Interactive UI Graph Engine Canvas</h3>
-          <p>Interactive visual canvas mapping reactive node workflow visualizers to an optimized, completely deterministic UI graph state coordinator operating fixed at 60 FPS performance bounds.</p>
+          <p>Interactive visual canvas mapping reactive node workflow visualizers to an optimized, completely deterministic UI graph state coordinator operating fixed at 60 FPS performance bounds. Built with TypeScript, React Flow, and custom state managers.</p>
         </article>
 
         <article>
           <h3>Project Aegis - Enterprise LLMOps Platform</h3>
-          <p>Enterprise observability and LLMOps deployment suite utilizing document ingestion with FAISS vectors and logging integration backed by Arize Phoenix telemetry.</p>
+          <p>Enterprise observability and LLMOps deployment suite utilizing document ingestion with FAISS vectors and logging integration backed by Arize Phoenix telemetry. Incorporates foundation model routing for GPT-4, Claude, and Gemini.</p>
         </article>
 
         <article>
           <h3>Project Panopticon - Asynchronous Multi-Agent Intelligence Network</h3>
-          <p>Multi-agent software configuration running asynchronous backend computations deployed securely via an automated python engine on Render with continuous cron-job uptime validation.</p>
+          <p>Multi-agent software configuration running asynchronous backend computations deployed securely via an automated python engine on Render and AWS with continuous cron-job uptime validation, containerized with Docker, and integrated via GitHub Actions.</p>
         </article>
       </section>
     </main>

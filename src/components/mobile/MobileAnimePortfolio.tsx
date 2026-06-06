@@ -27,72 +27,7 @@ const pirateSlamSpring = {
     damping: 14
 } as const;
 
-const customStyles = `
-  @keyframes mangaFlameTop {
-    0%, 100% { transform: scaleY(1) rotate(-2deg) skewX(-2deg); filter: blur(0.5px); opacity: 0.8; }
-    50% { transform: scaleY(1.1) rotate(2deg) skewX(2deg); filter: blur(0.2px); opacity: 0.95; }
-  }
-  @keyframes mangaFlameBottom {
-    0%, 100% { transform: scaleY(1) rotate(2deg) skewX(2deg); filter: blur(0.5px); opacity: 0.8; }
-    50% { transform: scaleY(1.1) rotate(-2deg) skewX(-2deg); filter: blur(0.2px); opacity: 0.95; }
-  }
-  @keyframes titanLightningStrike {
-    0% { opacity: 0; clip-path: polygon(40% 0%, 60% 0%, 48% 35%, 70% 25%, 35% 68%, 58% 62%, 30% 100%, 38% 100%, 48% 66%, 38% 70%, 55% 32%, 42% 36%); background-color: #00ff66; }
-    15% { opacity: 1; background-color: #00ff66; filter: drop-shadow(0 0 40px #00ff66) brightness(1.6); }
-    30% { opacity: 0.2; background-color: #ffffff; }
-    45% { opacity: 1; background-color: #00ff66; filter: drop-shadow(0 0 50px #00ff66); }
-    70% { opacity: 0.8; background-color: #047857; }
-    100% { opacity: 0; transform: scale(1.05); }
-  }
-  @keyframes titanScreenShake {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(-4px, 5px) rotate(-1deg); }
-    40% { transform: translate(4px, -3px) rotate(1deg); }
-    60% { transform: translate(-5px, -2px) rotate(0deg); }
-    80% { transform: translate(3px, 4px) rotate(1deg); }
-  }
-  @keyframes bladeSlashAnimation {
-    0% { transform: translateX(-110%) skewX(-35deg); opacity: 1; }
-    25% { opacity: 1; background-color: #00ff66; }
-    100% { transform: translateX(220%) skewX(-35deg); opacity: 0; }
-  }
-  @keyframes titanGlowSurge {
-    0%, 100% { border-color: #1c1917; filter: drop-shadow(0 0 0px transparent); }
-    15% { border-color: #00ff66; filter: drop-shadow(0 0 8px #00ff66); }
-    30% { border-color: #1c1917; filter: drop-shadow(0 0 1px rgba(0,255,102,0.2)); }
-    45% { border-color: #22c55e; filter: drop-shadow(0 0 12px #22c55e); }
-    60% { border-color: #1c1917; filter: drop-shadow(0 0 0px transparent); }
-    80% { border-color: #00ff66; filter: drop-shadow(0 0 6px #00ff66); }
-  }
-  @keyframes electricFlicker {
-    0%, 100% { opacity: 0.85; }
-    50% { opacity: 1; }
-    25% { opacity: 0.75; }
-    75% { opacity: 0.9; }
-  }
-/* 🫧 SABAODY OCEAN BUBBLES FLOATING DRIFT ENGINE */
-  @keyframes sabaodyBubbleDrift {
-    0% { transform: translateY(0) scale(0.6); opacity: 0; }
-    10% { opacity: 0.45; }
-    90% { opacity: 0.35; }
-    100% { transform: translateY(-115vh) scale(1.3) translateX(45px); opacity: 0; }
-  }
 
-  /* 🏴‍☠️ SEA LEGEND FLOATING POSTER CALIBRATION */
-  @keyframes oceanPosterFloat {
-    0% { transform: translateY(0px) rotate(0.5deg); }
-    50% { transform: translateY(-6px) rotate(-0.5deg); }
-    100% { transform: translateY(0px) rotate(0.5deg); }
-  }
-
-  /* 🔥 SUPREME CONQUEROR HAKI AURORA GRADIENT BURST */
-  @keyframes supremeHakiAura {
-    0%, 100% { transform: scale(1) rotate(0deg); filter: blur(3px); opacity: 0; }
-    20% { transform: scale(1.05) rotate(1.5deg) translate(3px, -2px); filter: blur(5px); opacity: 0.65; background-color: #ef4444; }
-    50% { transform: scale(0.98) rotate(-1deg) translate(-2px, 3px); filter: blur(4px); opacity: 0.4; background-color: #7c3aed; }
-    75% { transform: scale(1.03) rotate(0.5deg) translate(1px, -4px); filter: blur(6px); opacity: 0.7; background-color: #b91c1c; }
-  }
-`;
 
 const AmbientParticles = memo(({ activeTab }: { activeTab: 'home' | 'skills' | 'projects' }) => {
     // Stable particle metrics to prevent layout shifts and jiggling during tab switches or scroll events
@@ -251,8 +186,6 @@ export default function MobileAnimePortfolio() {
             style={{ animation: triggerLightning ? 'titanScreenShake 0.45s ease-in-out' : 'none' }}
         >
 
-            <style dangerouslySetInnerHTML={{ __html: customStyles }} />
-
             {/* BACKGROUND GRAPHIC INTERCEPT */}
             <div
                 className="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500"
@@ -301,7 +234,7 @@ export default function MobileAnimePortfolio() {
                                 <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.25, ease: [0.85, 0, 0.15, 1] }} className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 transform -skew-x-12 origin-left z-0" />
                                 <motion.h1 initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={shonenSpring} className="text-4xl font-black tracking-tighter uppercase italic text-white relative z-10 px-2 drop-shadow-[2.5px_2.5px_0px_#000]">Naveed Ahmed M</motion.h1>
                             </div>
-                            <p className="text-xs font-bold text-stone-500 tracking-tight font-mono mt-1">// AI SYSTEMS & 3D WEB GRAPHICS INTERFACES</p>
+                            <p className="text-xs font-bold text-stone-500 tracking-tight font-mono mt-1">// AI SYSTEMS & FULL-STACK ENGINEER</p>
                         </div>
                         <div className="relative w-full py-3 px-2">
                             {/* --- TOP FLAMES LAYER --- */}

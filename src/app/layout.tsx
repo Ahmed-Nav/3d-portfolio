@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Naveed Ahmed M | AI & Software Systems Architect",
+  title: "Naveed Ahmed M | AI Systems & Full-Stack Engineer",
   description: "Engineering robust full-stack software architectures, asynchronous multi-agent networks, and real-time interactive 3D WebGL environments.",
   openGraph: {
-    title: "Naveed Ahmed M | AI & Software Systems Architect",
+    title: "Naveed Ahmed M | AI Systems & Full-Stack Engineer",
     description: "Engineering robust full-stack software architectures, asynchronous multi-agent networks, and real-time interactive 3D WebGL environments.",
     url: "https://3d-portfolio-mauve-rho.vercel.app/",
     siteName: "Naveed Ahmed M — Portfolio",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Naveed Ahmed M | AI & Software Systems Architect",
+    title: "Naveed Ahmed M | AI Systems & Full-Stack Engineer",
     description: "Engineering robust full-stack software architectures, asynchronous multi-agent networks, and real-time interactive 3D WebGL environments.",
   },
 };

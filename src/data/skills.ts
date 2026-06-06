@@ -15,9 +15,9 @@ export const skillsData: SkillCategory[] = [
         id: "ai-engineering",
         title: "AI Engineering & Intelligent Systems",
         skills: [
-            { name: "Asynchronous Multi-Agent Networks", level: "Expert", diagnostic: "ORCHESTRATION_OK // Multi-agent communication nodes stable" },
-            { name: "Enterprise LLMOps (Arize Phoenix)", level: "Advanced", diagnostic: "OBSERVABILITY_FEED // Real-time runtime trace context mapped" },
-            { name: "Vector Databases & Embeddings (FAISS)", level: "Advanced", diagnostic: "RETRIEVAL_LATENCY < 45ms // Document ingestion indexed" }
+            { name: "Asynchronous Multi-Agent Networks", level: "Expert", diagnostic: "ORCHESTRATION_OK // Multi-agent workflow stable (LangGraph, CrewAI, AutoGen)" },
+            { name: "Enterprise LLMOps (Arize Phoenix)", level: "Advanced", diagnostic: "OBSERVABILITY_OK // Real-time trace mapping for LangChain & LlamaIndex pipelines" },
+            { name: "Vector Databases & Embeddings (FAISS)", level: "Advanced", diagnostic: "RETRIEVAL_OK < 45ms // Document ingestion indexed via FAISS & LlamaIndex" }
         ]
     },
     {
@@ -25,8 +25,8 @@ export const skillsData: SkillCategory[] = [
         title: "Core Software & Backend Systems",
         skills: [
             { name: "NestJS / Node.js Ecosystem", level: "Expert", diagnostic: "COMPILER_STABLE // Advanced modular backend architecture" },
-            { name: "Distributed Microservices & Cron Automation", level: "Advanced", diagnostic: "PROCESS_POOL // Deterministic asynchronous execution live" },
-            { name: "Relational & NoSQL Datastores", level: "Advanced", diagnostic: "POINTER_POOL_OK // Transaction layers & caching optimized" }
+            { name: "Distributed Microservices & Cron Automation", level: "Advanced", diagnostic: "PROCESS_POOL_OK // Asynchronous microservices containerized via Docker & FastAPI" },
+            { name: "Relational & NoSQL Datastores", level: "Advanced", diagnostic: "DATABASE_OK // PostgreSQL transaction layers & Redis caching optimized" }
         ]
     },
     {

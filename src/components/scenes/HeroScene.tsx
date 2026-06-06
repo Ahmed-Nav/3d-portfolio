@@ -58,11 +58,12 @@ export default function HeroScene({ isActive }: SceneProps) {
 
             const targetEmissiveIntensity = 1.5 + breathingFrequency + noiseSpike;
 
-            coreRef.current.traverse((child: any) => {
-                if (child.isMesh && child.material) {
-                    // If the material is configured to glow, override its scalar intensity dynamically
-                    if (child.material.emissiveIntensity !== undefined) {
-                        easing.damp(child.material, 'emissiveIntensity', targetEmissiveIntensity, 0.1, delta);
+            coreRef.current.traverse((child: THREE.Object3D) => {
+                if (child instanceof THREE.Mesh && child.material) {
+                    const material = child.material;
+                    if (!Array.isArray(material) && 'emissiveIntensity' in material) {
+                        const standardMat = material as THREE.MeshStandardMaterial;
+                        easing.damp(standardMat, 'emissiveIntensity', targetEmissiveIntensity, 0.1, delta);
                     }
                 }
             });

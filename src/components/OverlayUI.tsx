@@ -144,23 +144,33 @@ export default function OverlayUI({ currentStage, activeProject, setActiveProjec
                                 className="space-y-4"
                             >
                                 {/* PROMINENT IDENTITY HEADER WRAPPER */}
-                                <div className="space-y-1">
+                                <div className="space-y-3">
                                     <motion.span
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        className="text-xs font-bold text-amber-500 tracking-[0.35em] uppercase block"
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="text-[10px] font-black uppercase text-amber-400/90 tracking-[0.15em] block border border-amber-500/20 bg-amber-950/20 px-3.5 py-1.5 rounded-lg w-fit"
                                     >
-                                        NAVEED AHMED M // SYSTEMS_ARCHITECT
+                                        ❯ OPEN TO SWE / AI ENGINEER ROLES AT PRODUCT-FOCUSED TEAMS
                                     </motion.span>
 
-                                    {/* Clear, High-Impact Professional Heading Stack */}
-                                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-left leading-[0.85] font-sans">
-                                        <CyberHeader text="SOFTWARE" delay={0.05} />
-                                        <CyberHeader text="ENGINEER" delay={0.1} />
-                                        <span className="block text-xl md:text-2xl font-mono font-light tracking-tight mt-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
-                                            &nbsp;// Specializing in AI & 3D Graphics
-                                        </span>
-                                    </h1>
+                                    <div className="space-y-1">
+                                        <motion.span
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            className="text-xs font-bold text-amber-500 tracking-[0.35em] uppercase block"
+                                        >
+                                            NAVEED AHMED M // AI_SYSTEMS_FULL_STACK_ENGINEER
+                                        </motion.span>
+
+                                        {/* Clear, High-Impact Professional Heading Stack */}
+                                        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-left leading-[0.85] font-sans">
+                                            <CyberHeader text="AI & FULL-STACK" delay={0.05} />
+                                            <CyberHeader text="ENGINEER" delay={0.1} />
+                                            <span className="block text-xl md:text-2xl font-mono font-light tracking-tight mt-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
+                                                &nbsp;// Specializing in AI & 3D Graphics
+                                            </span>
+                                        </h1>
+                                    </div>
                                 </div>
 
                                 {/* Matrix Divider Line */}
@@ -173,7 +183,7 @@ export default function OverlayUI({ currentStage, activeProject, setActiveProjec
                                 <div className="space-y-3">
                                     <div className="text-[10px] text-stone-500 tracking-wider flex items-center gap-2">
                                         <span className="text-amber-500 font-bold">❯ TRAJECTORY:</span>
-                                        <span>FINAL-YEAR SYSTEMS DEVELOPER // CHENNAI</span>
+                                        <span>AI SYSTEMS & FULL-STACK ENGINEER // CHENNAI</span>
                                     </div>
 
                                     <p className="text-stone-400 font-sans text-xs md:text-sm leading-relaxed max-w-md border-l-2 border-amber-500/30 pl-4">
